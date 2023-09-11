@@ -4,10 +4,10 @@ import SolarModuleCartCard from './SolarModuleCartCard';
 import { useAppDispatch } from '../../../app/hooks/useAppDispatch';
 import { useCallback } from 'react';
 import { decrementQuantity, incrementQuantity } from '../model/checkoutActions';
-import { useAppSelector } from '../../../app/hooks/useAppSelector';
+import { useSelector } from 'react-redux';
 
 function SelectedSolarModules () {
-  const selectedSolarModules = useAppSelector(getSelectedSolarModules);
+  const selectedSolarModules = useSelector(getSelectedSolarModules);
   const dispatch = useAppDispatch();
 
   const onQuantityUp = useCallback((name: string) => {

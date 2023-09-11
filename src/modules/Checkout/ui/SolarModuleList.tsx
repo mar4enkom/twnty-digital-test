@@ -1,17 +1,17 @@
 import { useCallback, useEffect } from 'react';
 import { fetchSolarModules } from '../../SolarModules/model/solarModulesActions';
-import { useAppSelector } from '../../../app/hooks/useAppSelector';
 import { getSolarModules } from '../../SolarModules/model/solarModulesSelectors';
 import { useAppDispatch } from '../../../app/hooks/useAppDispatch';
 import { CircularProgress, Card, CardContent, Typography, Box } from '@mui/material';
 import { SelectModulePayload, selectModule } from '../model/checkoutActions';
 import SolarModuleCard from './SolarModuleCard';
 import { getSelectedSolarModules } from '../model/checkoutSelectors';
+import { useSelector } from 'react-redux';
 
 function SolarModuleList() {
   const dispatch = useAppDispatch();
-  const { solarModules, loading, error } = useAppSelector(getSolarModules);
-  const selectedSolarModules = useAppSelector(getSelectedSolarModules);
+  const { solarModules, loading, error } = useSelector(getSolarModules);
+  const selectedSolarModules = useSelector(getSelectedSolarModules);
 
   useEffect(() => {
     dispatch(fetchSolarModules());

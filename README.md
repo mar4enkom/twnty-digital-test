@@ -1,3 +1,28 @@
+# Thanks so much for the interesting test task
+## There are some interesting decisions and challenges below that were made during development:
+
+## Decisions:
+1. The application has two strict modules with their own public API: Checkout and SolarModules. This was needed to make code reusable, easily testable, easily scalable, and to avoid circular dependencies. Checkout is just about operating with selected modules. SolarModules - is just about fetching solar modules from the backend. 
+2. Using redux-thunk to work with asynchronous actions
+3. Choosing an associative array as a data structure for saving solar modules' data in store. There are a lot of cases.
+when we need to find a solar module by name. Using this data structure, we can find it with O(1).
+4. Before submitting an order, we do an extra validation by fetching the latest data from server to make sure that we have 
+enough solar modules to process the order.
+5. Using MUI to focus only on functionality
+
+## Problems with the app:
+Due to the time restrictions, I hadn't chance to fix some issues:
+1. Lots of boilerplate code. I know that it could be better to avoid createStore() and use slices approach. And it would be even better to use redux toolkit.
+2. Memoisation (a lot of extra re-renders that we should avoid).
+3. useAppDispatch hook, which gets any as a generic. 
+
+## Future work:
+1. Fix issues in the "Problems of the App" section
+2. Make the checkout reducer asynchronous (we don’t need to include the reducer for the checkout page in the app bundle) 
+3. Add .env file to .gitignore 
+4. Add unit testing for actions and selectors. Add UI testing and e2e testing. 
+5. Improve and thoroughly correct errors showing 
+
 # Getting Started with Create React App
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).

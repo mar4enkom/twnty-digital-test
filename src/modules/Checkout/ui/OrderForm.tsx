@@ -35,6 +35,8 @@ function OrderForm () {
         dispatch(fetchSolarModulesSuccess(serverSolarModules));
         dispatch(clearSelectedModules());
         alert("The order was successfully completed");
+      } else {
+        throw new Error("Sorry, some of products is out of stock now. Please, try to order again.");
       }
     } catch (e: unknown) {
       const error = getError(e);
